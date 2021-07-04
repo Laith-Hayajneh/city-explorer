@@ -46,4 +46,40 @@ img{
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  border-radius: 12px;
+}
+input[type=text] {
+  width: 180px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  /* background-image: url('searchicon.png'); */
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 50%;
+}
+input{
+  background-color: #189e9e; /* Green */
+  border: none;
+  color: rgb(3, 3, 3);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  
 }
