@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import './App.css';
+import Button from 'react-bootstrap/Button'
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends React.Component {
       locationData: resData.data[0],
       showMap: true
     })
-    
+
 
 
 
@@ -37,16 +38,20 @@ class App extends React.Component {
       <div>
         <h1>CITY EXPLORER</h1>
         <form onSubmit={this.getData} >
-          <input type='text' placeholder='city name ' name="city" />
+          <input variant type='text' placeholder='city name ' name="city" />
           <input type='submit' value="SEARCH" />
-          <p>
-            information about : {this.state.locationData.display_name}
+          
+          {
+            this.state.showMap &&
+            <p>
+              <p>
+                information about :<h1> {this.state.locationData.display_name} </h1>
 
-          </p>
-          <p>
-            lat:{this.state.locationData.lat}
-            lon :{this.state.locationData.lon}
-          </p>
+              </p>
+              <h2> Latitude: </h2>  {this.state.locationData.lat}
+              <h2> Longitude :</h2>{this.state.locationData.lon}
+            </p>
+          }
           {this.state.showMap &&
             <img alt="" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_MY_KEY}&center=${this.state.locationData.lat},${this.state.locationData.lon}&zoom=14`} />
 
@@ -55,7 +60,7 @@ class App extends React.Component {
 
         </form>
 
-       
+
       </div>
     )
   }
