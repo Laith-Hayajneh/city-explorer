@@ -4,7 +4,7 @@ import './App.css';
 // import Button from 'react-bootstrap/Button';
 import Weather from "./components/Weather";
 import Movies from "./components/Movies";
-// import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card'
 // import CardGroup from 'react-bootstrap/CardGroup'
 class App extends React.Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class App extends React.Component {
     await this.setState({
       WeatherInformation: weatherData.data,
       showWeather: true,
-    
+
 
     })
     console.log("third dxxxata", weatherData);
@@ -77,9 +77,9 @@ class App extends React.Component {
       cityName: e.target.city.value
     })
     //localhost:3001/weather?cityName=selecteddCity
-    
+
     let url = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_MY_KEY}&q=${this.state.cityName}&format=json`
-    
+
     this.renderWeather();
     this.renderMovies();
 
@@ -136,21 +136,25 @@ class App extends React.Component {
             <p>something went wrong in getting data from locationiq</p>
           }
 
+         
+
+
           {
             this.state.showMap &&
-            <p>
-              <p>
-                information about :<h1> {this.state.locationData.display_name} </h1>
+            <Card style={{ width: '35rem', backgroundColor: '#75c9e2', boxShadow: '2px 2px 2px black' }}>
+            <Card.Img variant="top" alt="maap"  src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_MY_KEY}&center=${this.state.locationData.lat},${this.state.locationData.lon}&zoom=14`} />
+            <Card.Body>
+              <Card.Title>information about :<h1> {this.state.locationData.display_name} </h1>
+              </Card.Title>
+              <Card.Text>
+                <h2> Latitude: </h2>  {this.state.locationData.lat}
+                <h2> Longitude :</h2>{this.state.locationData.lon}
+              </Card.Text>
 
-              </p>
-              <h2> Latitude: </h2>  {this.state.locationData.lat}
-              <h2> Longitude :</h2>{this.state.locationData.lon}
-            </p>
+            </Card.Body>
+          </Card>
           }
-          {this.state.showMap &&
-            <img alt="" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_MY_KEY}&center=${this.state.locationData.lat},${this.state.locationData.lon}&zoom=14`} />
-
-          }
+          
 
 
 
